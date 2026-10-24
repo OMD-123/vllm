@@ -222,16 +222,7 @@ class MultiModalBudget:
         actual_tokens: int,
         original_tokens: int,
     ) -> int:
-        \"\"\"Update the compute budget based on actual pruned tokens.
-
-        Args:
-            request_id: The ID of the request.
-            actual_tokens: The number of tokens actually retained after pruning.
-            original_tokens: The number of tokens originally budgeted.
-
-        Returns:
-            The amount of budget reclaimed (original - actual).
-        \"\"\"
+        """Update the compute budget based on actual pruned tokens."""
         reclaimed = max(0, original_tokens - actual_tokens)
         self.encoder_compute_budget += reclaimed
         return reclaimed
